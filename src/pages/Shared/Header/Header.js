@@ -29,12 +29,13 @@ const Header = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     <li><Link to='/'>Home</Link></li>
-                    <li><a>Add Service</a></li>
+                    <li><Link to='/services'>Services</Link></li>
+                    <li><Link >Add Service</Link></li>
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn btn-ghost mr-3">Sign up</a>
-                <a className="btn bg-orange-600 text-white">Log in</a>
+                <button className="btn btn-ghost mr-3">Sign up</button>
+                <button className="btn default-btn border-none text-white">Log in</button>
             </div>
         </div>
     );
