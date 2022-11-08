@@ -1,13 +1,13 @@
 import React from 'react';
 import { FaLongArrowAltRight } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 import './Service.css'
 
 
 const Service = ({service}) => {
-    const {title, sub_title, img, price, ratings, description} = service;
-    console.log(service);
+    const {title, sub_title, img, _id , description} = service;
     return (
-        <div className=''>
+        <div>
             <div className="card  bg-base-100 shadow-xl">
                 <figure><img src={img} alt="Shoes" /></figure>
                 <div className="card-body">
@@ -19,7 +19,7 @@ const Service = ({service}) => {
                         }...
                     </p>
                     <div className="card-actions justify-end">
-                        <button className='service-arrow btn btn-ghost' onClick={handleDescription}> <FaLongArrowAltRight></FaLongArrowAltRight> </button>
+                        <Link to={`/services/${_id}`} className='service-arrow btn btn-ghost'> <FaLongArrowAltRight></FaLongArrowAltRight> </Link>
                     </div>
                 </div>
             </div>

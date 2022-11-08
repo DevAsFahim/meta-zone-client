@@ -1,0 +1,18 @@
+.service_details {
+    display: flex;
+    gap: 40px;
+}
+.service_review {
+    flex-basis: 33%;
+}
+.service_review .card {
+    box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+}
+.details_container {
+    flex-basis: 77%;
+}
+.details_container .service_img {
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+}
