@@ -4,6 +4,8 @@ import './AddService.css'
 
 const AddService = () => {
 
+
+    // adding service function
     const handleAddService = (event) => {
         event.preventDefault()
         const form = event.target;
@@ -27,7 +29,22 @@ const AddService = () => {
             description
         }
 
-        console.log(service)
+        fetch('http://localhost:5000/services', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(service)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.acknowledged) {
+                alert('service added');
+                form.reset()
+            }
+            console.log(data)
+        })
+        .catch(er => console.error(er))
 
 
     }
