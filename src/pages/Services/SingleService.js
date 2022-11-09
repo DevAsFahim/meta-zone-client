@@ -5,10 +5,44 @@ import { AuthContext } from '../contexts/AuthProvider/AuthProvider'
 
 const SingleService = () => {
     const service = useLoaderData()
-    console.log(service);
-    const { description, img, price, ratings, sub_title, title } = service;
+    const { _id, description, img, price, ratings, sub_title, title } = service;
     const { user } = useContext(AuthContext)
-    console.log(user);
+
+    console.log(_id);
+
+    const handleAddReview = (event) => {
+        event.preventDefault()
+        const form = event.target;
+        const email = user?.email;
+        const img = form.img.value;
+        const message = form.message.value;
+
+        const review = {
+            serviceId: _id,
+            serviceName: title,
+            email,
+            img,
+            message
+        }
+
+        fetch('http://localhost:5000/reviews', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(review)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.acknowledged){
+                alert('your review added')
+                form.reset()
+                console.log(data);
+            }
+        })
+        .catch(er => console.error(er))
+        
+    }
 
     return (
         <div className='container m-auto'>
@@ -22,27 +56,23 @@ const SingleService = () => {
                     {
                         user?.uid ?
 
-                            <div className="card flex-shrink-0 w-full max-w-sm bg-base-100">
-                                <div className="card-body">
-                                    <div className="form-control">
-                                        <label className="label">
-                                            <span className="label-text">Email</span>
-                                        </label>
-                                        <input type="text" placeholder="email" className="input input-bordered" />
+                            <div className="connect">
+                                <form onSubmit={handleAddReview} className="card flex-shrink-0 w-full max-w-sm bg-base-100">
+                                    <div className="card-body">
+                                        <div className="form-control">
+                                            <input type="text" placeholder="email" value={user.email} className="input" readOnly />
+                                        </div>
+                                        <div className="form-control">
+                                            <input type="text" name='img' placeholder="Your img" defaultValue={user.photoURL} className="input" />
+                                        </div>
+                                        <div className="form-control">
+                                            <textarea name='message' className="textarea mt-4 h-24 w-full" placeholder="Your review" required></textarea>
+                                        </div>
+                                        <div className="form-control mt-6">
+                                            <button className="btn default-btn">Add Review</button>
+                                        </div>
                                     </div>
-                                    <div className="form-control">
-                                        <label className="label">
-                                            <span className="label-text">Password</span>
-                                        </label>
-                                        <input type="text" placeholder="password" className="input input-bordered" />
-                                        <label className="label">
-                                            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                                        </label>
-                                    </div>
-                                    <div className="form-control mt-6">
-                                        <button className="btn btn-primary">Login</button>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
 
                             :
