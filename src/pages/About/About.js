@@ -6,7 +6,7 @@ const About = () => {
         <div className='container mx-auto py-20'>
             <div className="hero min-h-screen">
                 <div className="hero-content flex-col lg:flex-row gap-8">
-                    <img src={aboutImg} className="w-3/5 rounded-lg shadow-4xl p-4 border" alt=''/>
+                    <img src={aboutImg} style={{'box-shadow': '10px 10px 19px #1c1e22, -10px -10px 19px #262a2e'}} className="w-3/5 rounded-lg p-6" alt=''/>
                     <div>
                         <small className='text-orange-500'>HAVE A LOOK ABOUT ME</small>
                         <h1 className="text-5xl font-bold text-zinc-200 mt-6">About</h1>
