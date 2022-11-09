@@ -2,13 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import './SingleService.css'
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider'
+import Review from '../Review/Review';
 
 const SingleService = () => {
     const service = useLoaderData()
     const { _id, description, img, price, ratings, sub_title, title } = service;
     const { user } = useContext(AuthContext)
-
-    console.log(_id);
+    const [reviews, setReviews] = useState([])
 
     const handleAddReview = (event) => {
         event.preventDefault()
@@ -22,7 +22,8 @@ const SingleService = () => {
             serviceName: title,
             email,
             img,
-            message
+            message,
+            name: user.displayName
         }
 
         fetch('http://localhost:5000/reviews', {
@@ -32,17 +33,25 @@ const SingleService = () => {
             },
             body: JSON.stringify(review)
         })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    alert('your review added')
+                    form.reset()
+                    console.log(data);
+                }
+            })
+            .catch(er => console.error(er))
+    }
+
+    useEffect( () => {
+        fetch(`http://localhost:5000/reviews?serviceId=${service._id}`)
         .then(res => res.json())
         .then(data => {
-            if(data.acknowledged){
-                alert('your review added')
-                form.reset()
-                console.log(data);
-            }
+            setReviews(data);
         })
         .catch(er => console.error(er))
-        
-    }
+    } , [service?._id])
 
     return (
         <div className='container m-auto'>
@@ -80,8 +89,14 @@ const SingleService = () => {
                             <p>Please <Link className='text-orange-600 font-bold link pb-5' to='/login'>Login</Link> to add review</p>
                     }
 
-                    <div>
-                        <p>peoples review</p>
+                    <div className='users_review mt-8 rounded-xl px-5 shadow-2xl'>
+                        <p className="text-2xl text-orange-600 font-bold">Reviews</p>
+                        {
+                            reviews.map(review => <Review
+                                key={review._id}
+                                review={review}
+                            ></Review>)
+                        }                    
                     </div>
                 </div>
                 <div className="details_container">
