@@ -59,8 +59,8 @@ const SingleService = () => {
                 <p className='text-orange-600'>Details</p>
                 <h3 className="text-5xl font-bold mt-3">Service Details</h3>
             </div>
-            <div className="service_details  py-20">
-                <div className="service_review ">
+            <div className="service_details md:flex-nowrap flex-wrap  py-20">
+                <div className="service_review px-4">
 
                     {
                         user?.uid ?
@@ -99,7 +99,7 @@ const SingleService = () => {
                         }                    
                     </div>
                 </div>
-                <div className="details_container">
+                <div className="details_container px-4">
                     <h4 className="text-4xl font-bold text-slate-300 mb-5"> {title} </h4>
                     <img src={img} className='service_img' alt='' />
                     <div className='md:w-4/5 gap-3 flex flex-wrap justify-between mt-7'>
