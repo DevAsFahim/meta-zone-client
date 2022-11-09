@@ -4,11 +4,11 @@ import './SignUp.css'
 import { AuthContext } from "../contexts/AuthProvider/AuthProvider";
 
 const SignUp = () => {
-    const {createUser} = useContext(AuthContext)
+    const { createUser, updateUserProfile } = useContext(AuthContext)
     const [success, setSuccess] = useState('');
     const [authError, setAuthError] = useState(false);
     const navigate = useNavigate();
-    
+
     const handleSignUp = (event) => {
         event.preventDefault()
         const form = event.target;
@@ -20,18 +20,30 @@ const SignUp = () => {
         setSuccess(false)
 
         createUser(email, password)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-            setSuccess(true)
-            form.reset()
-            navigate('/')
-        })
-        .catch(err => {
-            console.error(err)
-            setAuthError(err.message)
-        })
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setSuccess(true)
+                form.reset()
+                handleUpdateUserProfile(name, photoURL)
+                navigate('/')
+            })
+            .catch(err => {
+                console.error(err)
+                setAuthError(err.message)
+            })
     }
+
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
+
     return (
         <div className="hero py-20 connect min-h-screen bg-base-200">
             <div className="hero-content flex-col">
@@ -55,7 +67,7 @@ const SignUp = () => {
                         <label className="label">
                             <p>Already have an account? <Link to='/login' className='font-bold text-orange-500'>Lonin</Link></p>
                         </label>
-                        { success && <p className="text-green-600">User created Successfully!</p> }
+                        {success && <p className="text-green-600">User created Successfully!</p>}
                         <p className="text-red-600"> {authError} </p>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Sign Up</button>

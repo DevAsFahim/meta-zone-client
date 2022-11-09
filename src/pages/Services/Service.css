@@ -2,3 +2,7 @@
     color: #f9004d;
     font-size: 25px;
 }
+.single-service {
+    box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+    background-color: #212428;
+}

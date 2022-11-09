@@ -27,14 +27,21 @@ const Home = () => {
             </div>
             <About></About>
 
-            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5 py-20 container m-auto'>
-                {
-                    services.map(service => <Service
-                        key={service._id}
-                        service={service}
-                    ></Service>)
-                }
+            <div className="services-home">
+                <div className="text-center mt-14">
+                    <p className='text-orange-600'>Services</p>
+                    <h3 className="text-5xl font-bold mt-3">What I Do</h3>
+                </div>
+                <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5 py-20 container m-auto'>
+                    {
+                        services.map(service => <Service
+                            key={service._id}
+                            service={service}
+                        ></Service>)
+                    }
+                </div>
             </div>
+
 
         </>
     );

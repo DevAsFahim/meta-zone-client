@@ -5,10 +5,10 @@ import './Service.css'
 
 
 const Service = ({service}) => {
-    const {title, sub_title, img, _id , description} = service;
+    const {title,price, sub_title, img, _id , description} = service;
     return (
-        <div>
-            <div className="card  bg-base-100 shadow-xl">
+        <>
+            <div className="card single-service  bg-base-100 ">
                 <figure><img src={img} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title"> {title} </h2>
@@ -18,12 +18,13 @@ const Service = ({service}) => {
                             description.slice(0, 100)
                         }...
                     </p>
-                    <div className="card-actions justify-end">
+                    <div className="card-actions justify-end items-center">
+                        <p className="text-2xl text-slate-50">Price: <span className="text-orange-600 font-bold">${price}</span> </p>
                         <Link to={`/services/${_id}`} className='service-arrow btn btn-ghost'> <FaLongArrowAltRight></FaLongArrowAltRight> </Link>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 
