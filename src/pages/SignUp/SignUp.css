@@ -6,12 +6,12 @@
     width: 500px;
     box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
 }
-.connect .card input {
+.connect .card input, .connect .card textarea {
     background-color: #212428;
     box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
     margin-bottom: 10px;
 }
-.connect .card input:focus {
+.connect .card input:focus, .connect .card textarea:focus {
     outline: none;
 }
 

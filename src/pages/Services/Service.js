@@ -9,7 +9,7 @@ const Service = ({service}) => {
     return (
         <>
             <div className="card single-service  bg-base-100 ">
-                <figure><img src={img} alt="Shoes" /></figure>
+                <figure><img className='p-5' src={img} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title"> {title} </h2>
                     <p className='text-orange-200'> {sub_title} </p>

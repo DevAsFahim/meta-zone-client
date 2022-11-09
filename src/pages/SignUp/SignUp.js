@@ -70,7 +70,7 @@ const SignUp = () => {
                         {success && <p className="text-green-600">User created Successfully!</p>}
                         <p className="text-red-600"> {authError} </p>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Sign Up</button>
+                            <button className="btn default-btn">Sign Up</button>
                         </div>
                     </div>
                 </form>

@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import './SingleService.css'
+import { AuthContext } from '../contexts/AuthProvider/AuthProvider'
 
 const SingleService = () => {
     const service = useLoaderData()
     console.log(service);
     const { description, img, price, ratings, sub_title, title } = service;
+    const { user } = useContext(AuthContext)
+    console.log(user);
 
     return (
         <div className='container m-auto'>
@@ -15,27 +18,40 @@ const SingleService = () => {
             </div>
             <div className="service_details  py-20">
                 <div className="service_review ">
-                    <div className="card flex-shrink-0 w-full max-w-sm bg-base-100">
-                        <div className="card-body">
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Email</span>
-                                </label>
-                                <input type="text" placeholder="email" className="input input-bordered" />
+
+                    {
+                        user?.uid ?
+
+                            <div className="card flex-shrink-0 w-full max-w-sm bg-base-100">
+                                <div className="card-body">
+                                    <div className="form-control">
+                                        <label className="label">
+                                            <span className="label-text">Email</span>
+                                        </label>
+                                        <input type="text" placeholder="email" className="input input-bordered" />
+                                    </div>
+                                    <div className="form-control">
+                                        <label className="label">
+                                            <span className="label-text">Password</span>
+                                        </label>
+                                        <input type="text" placeholder="password" className="input input-bordered" />
+                                        <label className="label">
+                                            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                        </label>
+                                    </div>
+                                    <div className="form-control mt-6">
+                                        <button className="btn btn-primary">Login</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Password</span>
-                                </label>
-                                <input type="text" placeholder="password" className="input input-bordered" />
-                                <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                                </label>
-                            </div>
-                            <div className="form-control mt-6">
-                                <button className="btn btn-primary">Login</button>
-                            </div>
-                        </div>
+
+                            :
+
+                            <p>Please <Link className='text-orange-600 font-bold link pb-5' to='/login'>Login</Link> to add review</p>
+                    }
+
+                    <div>
+                        <p>peoples review</p>
                     </div>
                 </div>
                 <div className="details_container">
