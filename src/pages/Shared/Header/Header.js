@@ -24,6 +24,7 @@ const Header = () => {
                     <li><Link >Add Service</Link></li>
                 </ul>
             </div>
+            
             <div className="navbar-end">
                 <Link to='/signup' className="btn btn-ghost mr-3">Sign up</Link>
                 <Link to='/login' className="btn default-btn border-none text-white">Log in</Link>
