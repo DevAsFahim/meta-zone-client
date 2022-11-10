@@ -5,6 +5,7 @@ import { AuthContext } from '../contexts/AuthProvider/AuthProvider'
 import Review from '../Review/Review';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Head from '../../layout/Head';
 
 const SingleService = () => {
     const service = useLoaderData()
@@ -57,6 +58,7 @@ const SingleService = () => {
 
     return (
         <div className='container m-auto'>
+            <Head title={title}></Head>
             <div className="text-center mt-14 ">
                 <p className='text-orange-600'>Details</p>
                 <h3 className="text-5xl font-bold mt-3">Service Details</h3>

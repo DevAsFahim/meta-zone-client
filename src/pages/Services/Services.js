@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MutatingDots } from 'react-loader-spinner';
+import Head from '../../layout/Head';
 import Service from './Service';
 
 const Services = () => {
@@ -31,6 +32,7 @@ const Services = () => {
 
     return (
         <>  
+            <Head title='Services'></Head>
             <div className="text-center mt-14">
                 <p className='text-orange-600'>Services</p>
                 <h3 className="text-5xl font-bold mt-3">What I Do</h3>

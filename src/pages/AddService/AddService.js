@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './AddService.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Head from '../../layout/Head';
 
 const AddService = () => {
 
@@ -53,6 +54,7 @@ const AddService = () => {
 
     return (
         <div className="hero py-20 connect add_service min-h-screen bg-base-200">
+            <Head title='Add Service'></Head>
             <div className="hero-content flex-col">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold mb-6">Add a Service</h1>

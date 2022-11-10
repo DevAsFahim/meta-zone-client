@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './SignUp.css'
 import { AuthContext } from "../contexts/AuthProvider/AuthProvider";
 import { MutatingDots } from 'react-loader-spinner';
+import Head from '../../layout/Head';
 
 const SignUp = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext)
@@ -62,6 +63,7 @@ const SignUp = () => {
 
     return (
         <div className="hero py-20 connect min-h-screen bg-base-200">
+            <Head title='Sign up'></Head>
             <div className="hero-content flex-col">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold mb-6">Sign Up Here!</h1>

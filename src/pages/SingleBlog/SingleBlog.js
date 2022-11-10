@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import Head from '../../layout/Head';
 import './SingleBlog.css'
 
 const SingleBlog = () => {
@@ -9,6 +10,7 @@ const SingleBlog = () => {
 
     return (
         <div className='container single_blog'>
+            <Head title={title}></Head>
             <div className="details_container">
                 <h4 className="text-4xl font-bold text-slate-300 mb-5"> {title} </h4>
                 <img src={img} className='service_img mb-8' alt='' />

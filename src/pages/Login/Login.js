@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../contexts/AuthProvider/AuthProvider";
 import { MutatingDots } from 'react-loader-spinner';
 import { FaGoogle } from 'react-icons/fa';
+import Head from '../../layout/Head';
 
 
 const Login = () => {
@@ -62,6 +63,7 @@ const Login = () => {
 
     return (
         <div className="hero py-20 connect min-h-screen bg-base-200">
+            <Head title='Login'></Head>
             <div className="hero-content flex-col">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold mb-6">Login Here!</h1>

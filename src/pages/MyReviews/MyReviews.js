@@ -3,6 +3,7 @@ import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 import ReviewCard from '../ReviewCard/ReviewCard';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Head from '../../layout/Head';
 
 
 const MyReviews = () => {
@@ -20,19 +21,19 @@ const MyReviews = () => {
 
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure you want to delete this review')
-        if(proceed){
+        if (proceed) {
             fetch(`http://localhost:5000/reviews/${id}`, {
                 method: 'DELETE',
             })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if(data.deletedCount > 0) {
-                    toast.warn("Review has been deleted.")
-                    const remaining = reviews.filter(rev => rev._id !== id)
-                    setReviews(remaining)
-                }
-            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        toast.warn("Review has been deleted.")
+                        const remaining = reviews.filter(rev => rev._id !== id)
+                        setReviews(remaining)
+                    }
+                })
 
         }
     }
@@ -40,6 +41,7 @@ const MyReviews = () => {
 
     return (
         <>
+            <Head title='My Review'></Head>
             <div className="text-center mt-14">
                 <p className='text-orange-600'>My Review</p>
                 <h3 className="text-5xl font-bold mt-3">Own Reviews</h3>
