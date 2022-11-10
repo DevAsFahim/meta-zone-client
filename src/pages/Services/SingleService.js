@@ -92,11 +92,18 @@ const SingleService = () => {
                     <div className='users_review mt-8 rounded-xl px-5 shadow-2xl'>
                         <p className="text-2xl text-orange-600 font-bold">Reviews</p>
                         {
-                            reviews.map(review => <Review
-                                key={review._id}
-                                review={review}
-                            ></Review>)
-                        }                    
+                            (reviews.length > 0) ?
+                            <div>
+                                {
+                                reviews.map(review => <Review
+                                    key={review._id}
+                                    review={review}
+                                ></Review>)
+                            }  
+                            </div>  
+                            : 
+                            <p>be the first to review</p>
+                        }                
                     </div>
                 </div>
                 <div className="details_container px-4">
