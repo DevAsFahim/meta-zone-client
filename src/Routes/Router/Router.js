@@ -27,7 +27,7 @@ const router = createBrowserRouter([
             {
                 path:  '/services/:id',
                 element: <SingleService></SingleService>,
-                loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({params}) => fetch(`https://meta-zone-server-devasfahim.vercel.app/services/${params.id}`)
             },
             {
                 path: '/login',
@@ -48,12 +48,12 @@ const router = createBrowserRouter([
             {
                 path: '/blogs',
                 element: <Blogs></Blogs>,
-                loader: () => fetch('http://localhost:5000/blogs')
+                loader: () => fetch('https://meta-zone-server-devasfahim.vercel.app/blogs')
             },
             {
                 path:  '/blogs/:id',
                 element: <SingleBlog></SingleBlog>,
-                loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
+                loader: ({params}) => fetch(`https://meta-zone-server-devasfahim.vercel.app/blogs/${params.id}`)
             }
         ]
     }

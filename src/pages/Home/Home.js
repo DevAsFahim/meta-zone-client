@@ -11,7 +11,7 @@ const Home = () => {
 
     // get service api
     useEffect(() => {
-        fetch('http://localhost:5000/serviceshome')
+        fetch('https://meta-zone-server-devasfahim.vercel.app/serviceshome')
             .then(res => res.json())
             .then(data => {
                 setServices(data)
@@ -20,7 +20,7 @@ const Home = () => {
 
     // get blogs api
     useEffect(() => {
-        fetch('http://localhost:5000/blogshome')
+        fetch('https://meta-zone-server-devasfahim.vercel.app/blogshome')
             .then(res => res.json())
             .then(data => {
                 setBlogs(data)
