@@ -6,6 +6,7 @@ import './Service.css'
 
 const Service = ({service}) => {
     const {title,price, sub_title, img, _id , description} = service;
+    
     return (
         <>
             <div className="card single-service  bg-base-100 ">

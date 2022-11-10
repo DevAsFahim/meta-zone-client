@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { MutatingDots } from 'react-loader-spinner';
 import Service from './Service';
 
 const Services = () => {
+    const [loading, setLoading] = useState(true)
     const [services, setServices] = useState([])
 
     useEffect(() => {
@@ -9,8 +11,21 @@ const Services = () => {
             .then(res => res.json())
             .then(data => {
                 setServices(data)
+                setLoading(false)
             })
     }, [])
+
+    if(loading){
+        return <div className='py-28 text-center'><div className='inline-block'><MutatingDots
+        height="80"
+        width="80"
+        radius="9"
+        color="green"
+        ariaLabel="loading"
+        wrapperStyle
+        wrapperClass
+      /></div></div> 
+    }
 
 
 

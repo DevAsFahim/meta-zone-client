@@ -20,10 +20,11 @@ const SingleService = () => {
         const review = {
             serviceId: _id,
             serviceName: title,
+            serviceImg: service.img,
+            name: user.displayName,
             email,
-            img,
-            message,
-            name: user.displayName
+            userImg: img,
+            message
         }
 
         fetch('http://localhost:5000/reviews', {

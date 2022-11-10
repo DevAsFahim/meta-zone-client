@@ -2,12 +2,14 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './SignUp.css'
 import { AuthContext } from "../contexts/AuthProvider/AuthProvider";
+import { MutatingDots } from 'react-loader-spinner';
 
 const SignUp = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext)
     const [success, setSuccess] = useState('');
     const [authError, setAuthError] = useState(false);
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false)
 
     const handleSignUp = (event) => {
         event.preventDefault()
@@ -18,6 +20,7 @@ const SignUp = () => {
         const photoURL = form.photoURL.value;
         setAuthError('')
         setSuccess(false)
+        setLoading(true)
 
         createUser(email, password)
             .then(result => {
@@ -27,6 +30,7 @@ const SignUp = () => {
                 form.reset()
                 handleUpdateUserProfile(name, photoURL)
                 navigate('/')
+                setLoading(false)
             })
             .catch(err => {
                 console.error(err)
@@ -42,6 +46,18 @@ const SignUp = () => {
         updateUserProfile(profile)
             .then(() => { })
             .catch(error => console.error(error))
+    }
+
+    if (loading) {
+        return <div className='py-28 text-center'><div className='inline-block'><MutatingDots
+            height="80"
+            width="80"
+            radius="9"
+            color="green"
+            ariaLabel="loading"
+            wrapperStyle
+            wrapperClass
+        /></div></div>
     }
 
     return (
