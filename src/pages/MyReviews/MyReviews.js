@@ -1,14 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 import ReviewCard from '../ReviewCard/ReviewCard';
-import { FaBeer } from 'react-icons/fa';
+
 
 const MyReviews = () => {
     const { user } = useContext(AuthContext)
-    console.log(user.email);
     const [reviews, setReviews] = useState([])
-
-    console.log(reviews);
 
     useEffect(() => {
         fetch(`http://localhost:5000/reviews?email=${user.email}`)
@@ -19,11 +16,25 @@ const MyReviews = () => {
             .catch(er => console.error(er))
     }, [user?.email])
 
+    const handleDelete = (id) => {
+        const proceed = window.confirm('Are you sure you want to delete this review')
+        if(proceed){
+            fetch(`http://localhost:5000/reviews/${id}`, {
+                method: 'DELETE',
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+
+        }
+    }
+
 
     return (
         <>
             <div className="text-center mt-14">
-                <p className='text-orange-600'>My Review <FaBeer /></p>
+                <p className='text-orange-600'>My Review</p>
                 <h3 className="text-5xl font-bold mt-3">Own Reviews</h3>
             </div>
 
@@ -34,6 +45,7 @@ const MyReviews = () => {
                             reviews.map(review => <ReviewCard
                                 key={review._id}
                                 review={review}
+                                handleDelete={handleDelete}
                             ></ReviewCard>)
                         }
                     </div>

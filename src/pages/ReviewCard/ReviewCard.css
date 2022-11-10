@@ -12,3 +12,11 @@
     object-fit: cover;
     object-position: center;
 }
+.review_card .card .btn-square {
+    background-color: #212428;
+    box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+    border: none;
+}
+.review_card .card .btn-square:hover {
+    background-color: #f9004d;
+}
