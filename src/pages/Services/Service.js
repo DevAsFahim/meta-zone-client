@@ -2,6 +2,8 @@ import React from 'react';
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import './Service.css'
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 
 const Service = ({ service }) => {
@@ -10,7 +12,14 @@ const Service = ({ service }) => {
     return (
         <>
             <div className="card single-service  bg-base-100 ">
-                <figure><img className='p-5' src={img} alt="ServiceImage" /></figure>
+                <figure>
+                    <PhotoProvider>
+                        <PhotoView src={img}>
+                            <img className='p-5 cursor-zoom-in' src={img} alt="" />
+                        </PhotoView>
+                    </PhotoProvider>
+
+                </figure>
                 <div className="card-body">
                     <h2 className="card-title"> {title} </h2>
                     <p className='text-orange-200'> {sub_title} </p>

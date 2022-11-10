@@ -1,4 +1,33 @@
-# Getting Started with Create React App
+# Meta Zone
+
+**Live website link**
+[https://meta-zone.web.app/](https://meta-zone.web.app/)
+
+This project is created using `react.js` and `tailwind` as a framework.
+* What's on this website
+    * It's portfolio website.
+    * You can add service to database.
+    * Added service will show on service page.
+    * User can see public reviews in a particular service.
+    * User can give review for any service.
+    * User review will show on his/her My Review page.
+    * Icons used in this site from `react-icons`.
+    * One can login or register in this account.
+    * Loaded data from API.
+    * `React-router` used in here.
+    * Used `loader` from react-router to get data.
+    * firebase used as a database.
+
+* Technology used
+    * `React.js`
+    * `MongoDB`
+    * `Firebase`
+    * `tailwind`
+    * `daisy UI`
+    * `npm`
+    * `react-photo-view`
+    * `API`
+    * `react-router-dom`
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

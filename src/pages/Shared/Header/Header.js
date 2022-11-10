@@ -25,13 +25,12 @@ const Header = () => {
                         <li><Link to='/services'>Services</Link></li>
                         <li><Link to='/services'>Blog</Link></li>
                         {
-                            user?.uid ?
+                            user?.uid &&
                                 <>
                                     <li><Link to='/myreviews'>My Reviews</Link></li>
                                     <li><Link to='/addservice'>Add Service</Link></li>
+                                    <li><button onClick={handleLogOut}>Logout</button></li>
                                 </>
-                                :
-                                <li><button onClick={handleLogOut}>Logout</button></li>
                         }
                     </ul>
                 </div>
@@ -43,13 +42,13 @@ const Header = () => {
                     <li><Link to='/services'>Services</Link></li>
                     <li><Link to='/services'>Blog</Link></li>
                     {
-                        user?.uid ?
+                        user?.uid &&
                             <>
                                 <li><Link to='/myreviews'>My Reviews</Link></li>
                                 <li><Link to='/addservice'>Add Service</Link></li>
+                                <li><button onClick={handleLogOut}>Logout</button></li>
                             </>
-                            :
-                            <li><button onClick={handleLogOut}>Logout</button></li>
+                            
                     }
 
                 </ul>
