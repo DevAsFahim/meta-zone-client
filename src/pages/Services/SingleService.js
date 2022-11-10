@@ -3,6 +3,8 @@ import { Link, useLoaderData } from 'react-router-dom';
 import './SingleService.css'
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider'
 import Review from '../Review/Review';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SingleService = () => {
     const service = useLoaderData()
@@ -37,9 +39,8 @@ const SingleService = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    alert('your review added')
+                    toast.success("Review Added Successfully!")
                     form.reset()
-                    console.log(data);
                 }
             })
             .catch(er => console.error(er))
@@ -83,6 +84,7 @@ const SingleService = () => {
                                         </div>
                                     </div>
                                 </form>
+                                <ToastContainer />
                             </div>
 
                             :

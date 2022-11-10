@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './AddService.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddService = () => {
 
@@ -39,7 +41,7 @@ const AddService = () => {
         .then(res => res.json())
         .then(data => {
             if(data.acknowledged) {
-                alert('service added');
+                toast.success("Service Added Successfully!")
                 form.reset()
             }
             console.log(data)
@@ -70,7 +72,7 @@ const AddService = () => {
                         </div>
                         <div className='flex justify-between gap-4 flex-wrap md:flex-nowrap'>
                             <div className="form-control w-full">
-                                <input type="text" placeholder="Booking Price" name='price' className="input " required />
+                                <input type="number" placeholder="Booking Price" name='price' className="input " required />
                             </div>
                             <div className="form-control w-full">
                                 <input type="number" placeholder="Ratings" name='ratings' className="input " required />
@@ -85,6 +87,7 @@ const AddService = () => {
                             <button className="btn default-btn">Add Service</button>
                         </div>
                     </div>
+                    <ToastContainer />
                 </form>
             </div>
         </div>

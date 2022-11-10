@@ -2,10 +2,11 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../contexts/AuthProvider/AuthProvider";
 import { MutatingDots } from 'react-loader-spinner';
+import { FaGoogle } from 'react-icons/fa';
 
 
 const Login = () => {
-    const { login } = useContext(AuthContext)
+    const { login, loginWithGoogle } = useContext(AuthContext)
     const [success, setSuccess] = useState('');
     const [loading, setLoading] = useState(false)
     const [authError, setAuthError] = useState(false);
@@ -34,6 +35,19 @@ const Login = () => {
             })
     }
 
+    // google sign in
+    const handleGoogleLogin = () => {
+        loginWithGoogle()
+            .then((result) => {
+                const user = result.user;
+                navigate("/")
+                console.log(user);
+            }).catch((error) => {
+                setAuthError(error.message)
+            });
+    }
+
+    // loader
     if (loading) {
         return <div className='py-28 text-center'><div className='inline-block'><MutatingDots
             height="80"
@@ -52,24 +66,29 @@ const Login = () => {
                 <div className="text-center">
                     <h1 className="text-5xl font-bold mb-6">Login Here!</h1>
                 </div>
-                <form onSubmit={handleLogin} className="card w-full bg-base-100">
-                    <div className="card-body py-14">
-                        <div className="form-control">
-                            <input type="email" placeholder="Your Email" name='email' className="input " required />
+                <div className="card py-14">
+                    <form onSubmit={handleLogin} className="w-full">
+                        <div className="card-body">
+                            <div className="form-control">
+                                <input type="email" placeholder="Your Email" name='email' className="input " required />
+                            </div>
+                            <div className="form-control">
+                                <input type="password" placeholder="Password" name='password' className="input " required />
+                            </div>
+                            <label className="label">
+                                <p>Already have an account? <Link to='/signup' className='font-bold text-orange-500'>Sign Up</Link></p>
+                            </label>
+                            {success && <p className="text-green-600">User Logged in Successfully!</p>}
+                            <p className="text-red-600"> {authError} </p>
+                            <div className="form-control mt-6">
+                                <button className="btn default-btn">Login</button>
+                            </div>
                         </div>
-                        <div className="form-control">
-                            <input type="password" placeholder="Password" name='password' className="input " required />
-                        </div>
-                        <label className="label">
-                            <p>Already have an account? <Link to='/signup' className='font-bold text-orange-500'>Sign Up</Link></p>
-                        </label>
-                        {success && <p className="text-green-600">User Logged in Successfully!</p>}
-                        <p className="text-red-600"> {authError} </p>
-                        <div className="form-control mt-6">
-                            <button className="btn default-btn">Login</button>
-                        </div>
+                    </form>
+                    <div className="form-control mt-6 px-8">
+                        <button onClick={handleGoogleLogin} className="btn btn-outline btn-primary"> <FaGoogle className='mr-4'></FaGoogle> Login with Google</button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     );
