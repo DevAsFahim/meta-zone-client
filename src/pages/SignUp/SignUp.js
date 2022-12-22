@@ -83,7 +83,7 @@ const SignUp = () => {
                             <input type="password" placeholder="Password" name='password' className="input " required />
                         </div>
                         <label className="label">
-                            <p>Already have an account? <Link to='/login' className='font-bold text-orange-500'>Lonin</Link></p>
+                            <p>Already have an account? <Link to='/login' className='font-bold text-orange-500'>Login</Link></p>
                         </label>
                         {success && <p className="text-green-600">User created Successfully!</p>}
                         <p className="text-red-600"> {authError} </p>
